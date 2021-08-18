@@ -20,7 +20,8 @@ public class MainFrame extends javax.swing.JFrame {
     DaoInterface dao = new DaoImpl();
 
     public MainFrame() {
-        initComponents();
+         Connection conn = DBConnector.getConnection();
+        initComponents();        
         updateTable();
         setLocationRelativeTo(null);
 

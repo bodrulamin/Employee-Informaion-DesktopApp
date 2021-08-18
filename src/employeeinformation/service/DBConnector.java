@@ -8,6 +8,7 @@ package employeeinformation.service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.mysql.cj.jdbc.Driver;
 
 /**
  *
@@ -15,9 +16,10 @@ import java.sql.SQLException;
  */
 public class DBConnector {
 
-    static Connection conn = null;
+     static Connection conn = null;
 
     public static Connection getConnection() {
+       
         if (conn == null) {
             String url = "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6431541";
             String username = "sql6431541";
@@ -27,9 +29,7 @@ public class DBConnector {
                 conn = DriverManager.getConnection(url, username, pass);
                 System.out.println("connection successful");
 
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            } catch (ClassNotFoundException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
             }
         }
